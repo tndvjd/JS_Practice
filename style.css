@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 95vh;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+
+input {
+  min-width: 500px;
+  min-height: 80px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pending {
+  margin-top: 40px;
+}
+
