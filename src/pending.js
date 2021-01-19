@@ -9,7 +9,6 @@ const FINISHED_LS = "FINISHED";
 let toDos = [];
 let finishedToDos = [];
 
-
 function deleteToDo(event) {
   const btn = event.target;
   const li = btn.parentNode;
@@ -28,8 +27,18 @@ function deleteToDo(event) {
 function fillToDo(event) {
   const btn = event.target;
   const li = btn.parentNode;
+  const cplbtn = li.childNodes[2];
+  const bckbtn = li.lastChild;
+  cplbtn.setAttribute("class", "hiding");
+  bckbtn.removeAttribute("class");
   todoFinished.appendChild(li);
-  // toDos = finishedToDos;
+  console.dir(li.firstChild);
+  console.log(li.firstChild.nodeValue);
+  const newObj = {
+    text: li.firstChild.nodeValue,
+    id: li.id,
+  };
+  finishedToDos.push(newObj);
   saveToDos();
 }
 
