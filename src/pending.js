@@ -36,7 +36,7 @@ function cancelFinish(event) {
   const bckbtn = li.childNodes[2];
   const cplbtn = document.createElement("button");
   const span = li.firstChild.childNodes[0].data;
-  cplbtn.innerHTML = "✔";
+  cplbtn.innerHTML = "✅";
   cplbtn.addEventListener("click", fillToDo);
   todoPending.appendChild(li);
   li.appendChild(cplbtn);
@@ -62,7 +62,7 @@ function fillToDo(event) {
   const span = li.firstChild.childNodes[0].data;
   li.appendChild(bckbtn);
   li.removeChild(cplbtn);
-  bckbtn.innerHTML = "⮐";
+  bckbtn.innerHTML = "🛑";
   bckbtn.addEventListener("click", cancelFinish);
   todoFinished.appendChild(li);
   const newObj = {
@@ -84,9 +84,9 @@ function paintFinish(text) {
   const bckbtn = document.createElement("button");
   const span = document.createElement("span");
   const newId = toDos.length + 1;
-  delbtn.innerHTML = "X";
+  delbtn.innerHTML = "❌";
   delbtn.addEventListener("click", deleteToDo);
-  bckbtn.innerHTML = "⮐";
+  bckbtn.innerHTML = "🛑";
   bckbtn.addEventListener("click", cancelFinish);
   span.innerText = text;
   li.appendChild(span);
@@ -108,9 +108,9 @@ function paintToDo(text) {
   const cplbtn = document.createElement("button");
   const span = document.createElement("span");
   const newId = toDos.length + 1;
-  delbtn.innerHTML = "X";
+  delbtn.innerHTML = "❌";
   delbtn.addEventListener("click", deleteToDo);
-  cplbtn.innerHTML = "✔";
+  cplbtn.innerHTML = "✅";
   cplbtn.addEventListener("click", fillToDo);
   span.innerText = text;
   li.appendChild(span);
