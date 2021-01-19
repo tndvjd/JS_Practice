@@ -45,6 +45,7 @@ function paintToDo(text) {
   cplbtn.innerHTML = "✔";
   cplbtn.addEventListener("click", fillToDo);
   bckbtn.innerHTML = "⮐";
+  bckbtn.setAttribute("class", "hiding");
   // bckbtn.classList.add("hiding");
   span.innerText = text;
   li.appendChild(span);
