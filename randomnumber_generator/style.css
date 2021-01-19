@@ -1,0 +1,17 @@
+
+h1 {
+  margin: 0;
+}
+
+.js-range {
+  display: block;
+  width: 200px;
+  height: 50px;
+}
+
+.formtext {
+  display: inline;
+}
+.js-input {
+  width: 50px;
+}
