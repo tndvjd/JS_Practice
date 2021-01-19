@@ -29,6 +29,7 @@ function fillToDo(event) {
   const btn = event.target;
   const li = btn.parentNode;
   todoFinished.appendChild(li);
+  
   // toDos = finishedToDos;
   saveToDos();
 }
