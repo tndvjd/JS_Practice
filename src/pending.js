@@ -9,11 +9,6 @@ const FINISHED_LS = "FINISHED";
 let toDos = [];
 let finishedToDos = [];
 
-const cleanToDos = toDos.filter(function (toDo) {
-  return toDo.id !== parseInt(li.id);
-});
-
-
 
 function deleteToDo(event) {
   const btn = event.target;
@@ -23,6 +18,9 @@ function deleteToDo(event) {
   } else {
     todoFinished.removeChild(li);
   }
+  const cleanToDos = toDos.filter(function (toDo) {
+    return toDo.id !== parseInt(li.id);
+  });
   toDos = cleanToDos;
   saveToDos();
 }
@@ -31,9 +29,7 @@ function fillToDo(event) {
   const btn = event.target;
   const li = btn.parentNode;
   todoFinished.appendChild(li);
-  finishedToDos.push(btn.parentNode);
-  console.log(li);
-  toDos = cleanToDos;
+  // toDos = finishedToDos;
   saveToDos();
 }
 
@@ -41,16 +37,20 @@ function paintToDo(text) {
   const li = document.createElement("li");
   const delbtn = document.createElement("button");
   const cplbtn = document.createElement("button");
+  const bckbtn = document.createElement("button");
   const span = document.createElement("span");
   const newId = toDos.length + 1;
   delbtn.innerHTML = "X";
   delbtn.addEventListener("click", deleteToDo);
   cplbtn.innerHTML = "✔";
   cplbtn.addEventListener("click", fillToDo);
+  bckbtn.innerHTML = "⮐";
+  // bckbtn.classList.add("hiding");
   span.innerText = text;
   li.appendChild(span);
   li.appendChild(delbtn);
   li.appendChild(cplbtn);
+  li.appendChild(bckbtn);
   li.id = newId;
   todoPending.appendChild(li);
   const toDoObj = {
@@ -77,8 +77,8 @@ function loadToDos() {
   const loadedFinishes = localStorage.getItem(FINISHED_LS);
   if (loadedToDos !== null) {
     const parsedToDos = JSON.parse(loadedToDos);
-    parsedToDos.forEach(function (toDos) {
-      paintToDo(toDos.text);
+    parsedToDos.forEach(function (pending) {
+      paintToDo(pending.text);
     });
   }
 }
