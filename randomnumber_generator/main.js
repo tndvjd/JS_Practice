@@ -2,7 +2,6 @@ const form = document.querySelector(".js-form");
 const numberRange = form.querySelector(".js-range");
 const numberInput = form.querySelector(".js-input");
 const btn = form.querySelector("button");
-const result = document.querySelector(".js-result");
 const p = document.querySelector(".choose");
 const span = document.querySelector(".winORlose");
 
