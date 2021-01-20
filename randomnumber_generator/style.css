@@ -1,16 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  overflow-y: hidden;
+  background: beige;
+}
+
 h1 {
   margin: 0;
+  background-color: peru;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .js-range {
   display: block;
-  width: 200px;
-  height: 50px;
+  width: 500px;
+  height: 30px;
+  margin: 15px auto 30px;
 }
 
 .formtext {
   display: inline;
 }
+
+button,
 .js-input {
-  width: 50px;
+  border: none;
+  width: 75px;
+  height: 30px;
+  text-align: center;
+}
+
+.fz1rem {
+  font-size: 1rem;
 }
