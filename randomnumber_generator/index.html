@@ -10,11 +10,24 @@
 <body>
   <h1>Random Number Game</h1>
   <form class="js-form">
-    <input class="js-range" type="range" min="0" max="200" step="10">
+    <h3 id = "js-sliderValue">Generate a number between 0 and 10</h3>	
+    <input class="js-range" oninput = 'showSliderValue(this.value)' type="range" list="tickmarks" step="5" value="10" min="0" max="100">
+    <datalist id="tickmarks">
+      <option value="0"></option>
+      <option value="25"></option>
+      <option value="50"></option>
+      <option value="75"></option>
+      <option value="100"></option>
+    </datalist>
     <p class="formtext">Guess the number:</p>
     <input class="js-input" type="text" />
     <button class="js-btn">Play!</button>
   </form>
+  <div class="js-result">
+    <p class="choose"></p>
+    <span class="winORlose" style="font-weight: bold"></span>
+  </div>
+
   <script src="main.js"></script>
 </body>
 </html>
