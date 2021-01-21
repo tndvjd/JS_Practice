@@ -13,13 +13,14 @@ body {
   justify-content: center;
 }
 
-span {
+input {
   display: inline-block;
   width: 75%;
   text-align: right;
   margin: 5px 5px;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding: 3px;
 }
 
 form {
@@ -45,14 +46,10 @@ button:focus {
   width: 50%;
 }
 
-.operator {
+.fill-orange {
   background-color: orange;
 }
 
 .col {
-  display: flex;
-}
-
-.col2 {
   display: flex;
 }

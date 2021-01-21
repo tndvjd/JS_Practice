@@ -1,49 +1,101 @@
-const form = document.querySelector("#js-form");
-const btn = form.querySelectorAll("button");
-const number = form.querySelector("span");
+const keys = document.querySelector("#js-form");
+const clear = document.querySelector(".js-clear");
+const screen = document.querySelector(".js-screen");
 
-function previousNum() {
-  number.innerHTML = number.innerHTML;
-  console.log(number.innerHTML);
+const calculator = {
+  displayValue: "0",
+  firstOperand: null,
+  waitingForSecondOperand: false,
+  operator: null,
+};
+
+function updateDisplay() {
+
+  screen.value = calculator.displayValue;
 }
 
-function checkWhatOperator(operator) {
-  switch (operator) {
-    case "+":
-      console.log("plus");
-      previousNum();
-      break;
-    case "-":
-      console.log("minus");
-      break;
-    case "*":
-      console.log("multiply");
-      break;
-    case "/":
-      console.log("divide");
-      break;
-    case "=":
-      console.log("result");
-      break;
-    case "C":
-      number.innerHTML = "";
-      console.log("clear");
-      break;
-  }
-}
+updateDisplay();
 
-form.onclick = function (event) {
+keys.addEventListener("click", (event) => {
   event.preventDefault();
-  let target = event.target;
-  const parsed = parseInt(target.innerHTML);
-  const judgeNaN = isNaN(parsed);
 
-  if (target.tagName != "BUTTON") {
+  const { target } = event;
+  const { value } = target;
+  if (!target.matches("button")) {
     return;
   }
-  if (judgeNaN === true) {
-    checkWhatOperator(target.innerHTML);
-  } else {
-    number.innerHTML = number.innerHTML + target.innerHTML;
+
+  switch (value) {
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+      handleOperator(value);
+      break;
+    case "C":
+      resetCalculator();
+      break;
+    default:
+      if (Number.isInteger(parseFloat(value))) {
+        inputDigit(value);
+      }
   }
-};
+
+  updateDisplay();
+});
+
+function inputDigit(digit) {
+  const { displayValue, waitingForSecondOperand } = calculator; // is equivalent to const displayValue = calculator.displayValue;
+
+  if (waitingForSecondOperand === true) {
+    calculator.displayValue = digit;
+    calculator.waitingForSecondOperand = false;
+  } else {
+    calculator.displayValue =
+      displayValue === "0" ? digit : displayValue + digit;
+  }
+}
+
+function handleOperator(nextOperator) {
+  const { firstOperand, displayValue, operator } = calculator;
+  const inputValue = parseFloat(displayValue);
+
+  if (operator && calculator.waitingForSecondOperand) {
+    calculator.operator = nextOperator;
+    return;
+  }
+
+  if (firstOperand === null && !isNaN(inputValue)) {
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const result = calculate(firstOperand, inputValue, operator);
+
+    calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+    calculator.firstOperand = result;
+  }
+
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
+}
+
+function calculate(firstOperand, secondOperand, operator) {
+  if (operator === "+") {
+    return firstOperand + secondOperand;
+  } else if (operator === "-") {
+    return firstOperand - secondOperand;
+  } else if (operator === "*") {
+    return firstOperand * secondOperand;
+  } else if (operator === "/") {
+    return firstOperand / secondOperand;
+  }
+
+  return secondOperand;
+}
+
+function resetCalculator() {
+  calculator.displayValue = "0";
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
+}
