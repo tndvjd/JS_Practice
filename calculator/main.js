@@ -2,10 +2,16 @@ const form = document.querySelector("#js-form");
 const btn = form.querySelectorAll("button");
 const number = form.querySelector("span");
 
+function previousNum() {
+  number.innerHTML = number.innerHTML;
+  console.log(number.innerHTML);
+}
+
 function checkWhatOperator(operator) {
   switch (operator) {
     case "+":
-      console.log("surplus");
+      console.log("plus");
+      previousNum();
       break;
     case "-":
       console.log("minus");
@@ -20,7 +26,8 @@ function checkWhatOperator(operator) {
       console.log("result");
       break;
     case "C":
-      console.log("cleared");
+      number.innerHTML = "";
+      console.log("clear");
       break;
   }
 }
@@ -37,6 +44,6 @@ form.onclick = function (event) {
   if (judgeNaN === true) {
     checkWhatOperator(target.innerHTML);
   } else {
-    number.innerHTML = target.innerHTML;
+    number.innerHTML = number.innerHTML + target.innerHTML;
   }
 };
