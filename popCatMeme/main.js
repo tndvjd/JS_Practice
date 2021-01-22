@@ -13,6 +13,7 @@ function loadScore() {
 }
 
 function keyDown(event) {
+  console.log(event);
   if (event.code === "KeyP") {
     popCat.src = "images/pop.png";
   }
