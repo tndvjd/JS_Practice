@@ -38,10 +38,26 @@ function keyUp(event) {
   }
 }
 
+function touchStart() {
+  popCat.src = "images/pop.png";
+  audio.play();
+  rotateCat();
+}
+
+function touchEnd() {
+  popCat.src = "images/normal.png";
+  popCount++;
+  score.innerText = `Your POP Count : ${popCount}`;
+  saveScore(popCount);
+}
+
+
 function init() {
+  popCat.addEventListener('touchstart', touchStart);
+  popCat.addEventListener('touchend', touchEnd);
   window.onkeydown = (e) => keyDown(e);
   window.onkeyup = (e) => keyUp(e);
-  resetBtn.addEventListener('click', (e) => {
+  resetBtn.addEventListener('click', () => {
     localStorage.removeItem('count');
     popCount = 0;
     score.innerText = 'Press P and record your score!'
