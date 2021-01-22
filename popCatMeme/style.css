@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+span {
+  display: block;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}

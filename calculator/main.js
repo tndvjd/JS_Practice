@@ -10,7 +10,6 @@ const calculator = {
 };
 
 function updateDisplay() {
-
   screen.value = calculator.displayValue;
 }
 
